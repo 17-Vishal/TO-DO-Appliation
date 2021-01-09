@@ -57,7 +57,7 @@ const EditTodo = ({ todo }) => {
                 <div class="modal-footer">
 
                 <Button className="btn btn-danger" variant="contained" color="primary"  type="submit" fullWidth>Edit</Button>
-                <Button variant="contained" color="secondary"  fullWidth onClick={() => setFormData(formData)}>Close</Button>
+                <Button variant="contained" color="secondary" data-dismiss="modal"  fullWidth onClick={() => setFormData(formData)}>Close</Button>
                 </div>
             </form>
 
