@@ -35,6 +35,9 @@ const AddTodoForm = () => {
             console.error(err.message);
         }
     }
+    const clear = () => {
+        setFormData({ title: '', description: '', created_date: new Date(), priority: '', todo_state:''});
+      };
 
     return (
       
@@ -48,7 +51,7 @@ const AddTodoForm = () => {
                 <TextField name="priority" variant="outlined" label="Priority ( 1 - 5 ) 5 being high" fullWidth  value={formData.priority} onChange={(e) => setFormData({ ...formData, priority: e.target.value })} />
                 <TextField name="todo_state" variant="outlined" label="State ( Completed/ In_Progress/ Pending )" fullWidth value={formData.todo_state} onChange={(e) => setFormData({ ...formData, todo_state: e.target.value })} />
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
-                <Button variant="contained" color="secondary" size="small" fullWidth>Clear</Button>
+                <Button variant="contained" color="secondary" size="small" fullWidth onClick={clear} >Clear</Button>
             </form>
         </Paper>
     );
