@@ -69,6 +69,15 @@ const ListTodos = () => {
         }
       };
 
+      // function MyFunction(check) {
+      //   var tempDate = check;
+      //   var date = tempDate.getFullYear() + '-' + (tempDate.getMonth()+1) + '-' + tempDate.getDate() +' ';
+      //   const currDate = date;
+      //   return (
+      //     <p>{currDate}</p>
+      //   );
+      // }
+
       const searchTodo = async() => {
       
             if(fielder==="title")
@@ -77,10 +86,12 @@ const ListTodos = () => {
             setDisplay(todos.filter(todo => todo.description === search));
             if(fielder==="priority")
             setDisplay(todos.filter(todo => todo.priority === search));
-            if(fielder==="created_at")
+            if(fielder==="created_date")
+            {
             setDisplay(todos.filter(todo => todo.created_date === search));
-            if(fielder==="state")
-            setDisplay(todos.filter(todo => todo.state === search));
+            }
+            if(fielder==="todo_state")
+            setDisplay(todos.filter(todo => todo.todo_state === search));
           
       };
 
