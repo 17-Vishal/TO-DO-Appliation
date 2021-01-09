@@ -47,7 +47,7 @@ const EditTodo = ({ todo }) => {
                     {/* <input type="text" className="form-control" value={description} onChange={e =>
                     setDescription(e.target.value)}/> */}
                     <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={e=>updateDescription(e)}>     
-                <Typography variant="h6">Form</Typography>
+                {/* <Typography variant="h6">Form</Typography> */}
                 {/* <TextField name="check" variant="outlined" label="check" fullWidth value={reviewData.check} onChange={(e) => setReviewData({ ...reviewData, check: e.target.value })} /> */}
 
                 <TextField name="title" variant="outlined" label="Title" fullWidth value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
@@ -56,7 +56,7 @@ const EditTodo = ({ todo }) => {
                 <TextField name="todo_state" variant="outlined" label="todo_state" fullWidth value={formData.todo_state} onChange={(e) => setFormData({ ...formData, todo_state: e.target.value })} />
                 <div class="modal-footer">
 
-                <Button className="btn btn-danger" variant="contained" color="primary" data-dismiss="modal" type="submit" fullWidth>Edit</Button>
+                <Button className="btn btn-danger" variant="contained" color="primary"  type="submit" fullWidth>Edit</Button>
                 <Button variant="contained" color="secondary" data-dismiss="modal"  fullWidth onClick={() => setFormData(formData)}>Close</Button>
                 </div>
             </form>
