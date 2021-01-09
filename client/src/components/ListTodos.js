@@ -78,7 +78,7 @@ const ListTodos = () => {
             if(fielder==="priority")
             setDisplay(todos.filter(todo => todo.priority === search));
             if(fielder==="created_at")
-            setDisplay(todos.filter(todo => todo.created_at === search));
+            setDisplay(todos.filter(todo => todo.created_date === search));
             if(fielder==="state")
             setDisplay(todos.filter(todo => todo.state === search));
           
