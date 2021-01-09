@@ -10,7 +10,7 @@ const EditTodo = ({ todo }) => {
     
     const classes = useStyles();
     // console.log(formData);
-    const updateDescription= async e => {
+    const updateDescription= async (e) => {
         e.preventDefault();
         try {
             // console.log(formData);
@@ -21,7 +21,7 @@ const EditTodo = ({ todo }) => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body),
             });
-            window.application = "/";
+            window.location = "/";
         } catch (err) {
             console.error(err.message);
         }
@@ -46,7 +46,7 @@ const EditTodo = ({ todo }) => {
                 <div class="modal-body">
                     {/* <input type="text" className="form-control" value={description} onChange={e =>
                     setDescription(e.target.value)}/> */}
-                    <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={e=>updateDescription(e)}>     
+                    <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} >     
                 {/* <Typography variant="h6">Form</Typography> */}
                 {/* <TextField name="check" variant="outlined" label="check" fullWidth value={reviewData.check} onChange={(e) => setReviewData({ ...reviewData, check: e.target.value })} /> */}
 
@@ -56,7 +56,7 @@ const EditTodo = ({ todo }) => {
                 <TextField name="todo_state" variant="outlined" label="todo_state" fullWidth value={formData.todo_state} onChange={(e) => setFormData({ ...formData, todo_state: e.target.value })} />
                 <div class="modal-footer">
 
-                <Button className="btn btn-danger" variant="contained" color="primary"  type="submit" fullWidth>Edit</Button>
+                <Button className="btn btn-danger" variant="contained" color="primary"  data-dismiss="modal"  onClick={e=>updateDescription(e)}>Edit</Button>
                 <Button variant="contained" color="secondary" data-dismiss="modal"  fullWidth onClick={() => setFormData(formData)}>Close</Button>
                 </div>
             </form>
