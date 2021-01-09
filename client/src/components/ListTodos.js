@@ -51,6 +51,7 @@ const BootstrapInput = withStyles((theme) => ({
 
 const ListTodos = () => {
     const [todos, setTodos]=useState("");
+    const [display, setDisplay]=useState("");
     const [search, setSearch]=useState("");
     const classes = useStyles();
     const [fielder, setFielder] = useState("");
@@ -71,15 +72,15 @@ const ListTodos = () => {
       const searchTodo = async() => {
       
             if(fielder==="title")
-            setTodos(todos.filter(todo => todo.title === search));
+            setDisplay(todos.filter(todo => todo.title === search));
             if(fielder==="description")
-            setTodos(todos.filter(todo => todo.description === search));
+            setDisplay(todos.filter(todo => todo.description === search));
             if(fielder==="priority")
-            setTodos(todos.filter(todo => todo.priority === search));
+            setDisplay(todos.filter(todo => todo.priority === search));
             if(fielder==="created_at")
-            setTodos(todos.filter(todo => todo.created_at === search));
+            setDisplay(todos.filter(todo => todo.created_at === search));
             if(fielder==="state")
-            setTodos(todos.filter(todo => todo.state === search));
+            setDisplay(todos.filter(todo => todo.state === search));
           
       };
 
@@ -88,6 +89,7 @@ const ListTodos = () => {
             const response = await fetch("http://localhost:5000/todos")
             const jsonData = await response.json();
             setTodos(jsonData);
+            setDisplay(jsonData);
             console.log(jsonData);
         } catch (err) {
             console.error(err.message);
@@ -140,7 +142,7 @@ const ListTodos = () => {
           <Container>
             <br>
             </br>
-         { !todos.length ? <CircularProgress /> : (
+         { !display.length ? <CircularProgress /> : (
          
           <TableContainer component={Paper}>
             <Typography align="center" style={{fontSize:"30px", color:"#4169E1"}}><b>TASKS</b></Typography>
@@ -158,8 +160,8 @@ const ListTodos = () => {
               </TableHead>
               <TableBody>
                 
-                {todos.map(todo => (
-                  <TableRow key={todo.todoid}>
+                {display.map(todo => (
+                  <TableRow key={todo.todo_id}>
                        <TableCell align="center"><p style={{fontSize:'14px'}}> {todo.title} </p></TableCell>
                     <TableCell align="center" multiline rows={4}><p style={{fontSize:'14px'}}> {todo.description} </p></TableCell>
                     <TableCell align="center"><p style={{fontSize:'14px'}}> {todo.priority} </p></TableCell>
