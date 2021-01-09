@@ -3,7 +3,7 @@
 
 ### Approach:
 I have made made a Database using Postgre SQL, In the database I created a table todo and set columns with field title, description, priority, date and state in it.
-Then I worked on API's of nbackend to Create, Update, Read and Delete the data. In Read I have sorted the data by priority so that the more priority data is displayed on top of the table. For update and delete I have took help of parameter because we need the id of the row that is to be changed. 
+Then I worked on API's of backend to Create, Update, Read and Delete the data. In Read I have sorted the data by priority so that the more priority data is displayed on top of the table. For update and delete I have took help of parameter because we need the id of the row that is to be changed. 
 Then I have worked on the frontend part using React JS, designing the form and table field.
 In form I have took all the data and then called my post API to store data.
 Then to display table I have used get API, and also PUT and DELETE API's are used to change the data.
