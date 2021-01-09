@@ -1,9 +1,10 @@
-# TO-DO Appliation
+# TO-DO Application
+
 This is the form section where we can enter fields like title, description, priority of the task, and state it is in.
  ![alt text](https://github.com/17-Vishal/TO-DO-Application/blob/main/App_Images/1.PNG)
  
  Now, here below is search button that can be used to search for a specific text of specific field.
- ![alt text](https://github.com/17-Vishal/TO-DO-Application/blob/main/App_Images/2.PNG)
+ ![alt text](https://github.com/17-Vishal/TO-DO-Application/blob/main/App_Images/2.png)
  
  Now, below is the table that will be displayed. The table is sorted by **priority** and  also swe can edit and delete data from list.
  ![alt text](https://github.com/17-Vishal/TO-DO-Application/blob/main/App_Images/3.PNG)
