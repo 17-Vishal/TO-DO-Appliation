@@ -56,7 +56,7 @@ const EditTodo = ({ todo }) => {
                 <TextField name="todo_state" variant="outlined" label="todo_state" fullWidth value={formData.todo_state} onChange={(e) => setFormData({ ...formData, todo_state: e.target.value })} />
                 <div class="modal-footer">
 
-                <Button className="btn btn-danger" variant="contained" color="primary"  type="submit" fullWidth>Edit</Button>
+                <Button className="btn btn-danger" variant="contained" color="primary" data-dismiss="modal" type="submit" fullWidth>Edit</Button>
                 <Button variant="contained" color="secondary" data-dismiss="modal"  fullWidth onClick={() => setFormData(formData)}>Close</Button>
                 </div>
             </form>
