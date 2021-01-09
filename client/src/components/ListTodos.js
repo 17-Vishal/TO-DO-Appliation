@@ -138,7 +138,7 @@ const ListTodos = () => {
             {/* <input type="submit" value="Submit"></input> */}
             &nbsp;&nbsp;&nbsp;&nbsp;
              <button
-                    className="btn btn-danger"
+                    className="btn btn-success"
                     variant="contained"
                     onClick={() => searchTodo()}
                     >
@@ -146,7 +146,7 @@ const ListTodos = () => {
                     </button>
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <button
-                    className="btn btn-danger"
+                    className="btn btn-info"
                     variant="contained"
                     onClick={() => getTodos()}
                     >
