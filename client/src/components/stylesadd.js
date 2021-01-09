@@ -20,7 +20,7 @@ export default makeStyles((theme) => ({
     margin: '10px 0',
   },
   buttonSubmit: {
-    backgroundColor: '#AFEEEE',
+    backgroundColor: '#4682B4',
     marginBottom: 10,
   },
 }));
