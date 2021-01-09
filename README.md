@@ -28,6 +28,7 @@ CREATE TABLE todo(
 
 All The API's to Create, Read, Delete, Update.
 ```
+// { CREATE } todo
 app.post("/todos", async(req, res) => {
     try {
         const newTodo = await pool.query("INSERT INTO todo (title, description, created_date, priority, todo_state) VALUES($1, $2, $3, $4, $5) RETURNING * ",
@@ -103,3 +104,14 @@ app.delete('/todos/:id', async(req, res) => {
     }
 });
 ```
+
+### Approach:
+I have made made a Database using Postgre SQL, In the database I created a table todo and set columns with field title, description, priority, date and state in it.
+Then I worked on API's of nbackend to Create, Update, Read and Delete the data. In Read I have sorted the data by priority so that the more priority data is displayed on top of the table. For update and delete I have took help of parameter because we need the id of the row that is to be changed. 
+Then I have worked on the frontend part using React JS, designing the form and table field.
+In form I have took all the data and then called my post API to store data.
+Then to display table I have used get API, and also PUT and DELETE API's are used to change the data.
+Also I have put a search field so that oen can search the specific tasks.
+
+-> To run I have not shared node modules. The project can be cloned and after adding node modules it will be ready to run. I have used node version 14 in this. Also to start server we have go in server folder and so "npm start" and the same commmand by going in client folder from the command line.
+
