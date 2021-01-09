@@ -110,6 +110,10 @@ const ListTodos = () => {
         getTodos();
     }, [])
 
+    const clear = () => { 
+      setFielder("");
+      setSearch("");
+    };
     return (
         <Fragment>
             {" "}
@@ -147,6 +151,14 @@ const ListTodos = () => {
                     onClick={() => getTodos()}
                     >
                         Reset
+                    </button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button
+                    className="btn btn-danger"
+                    variant="contained"
+                    onClick={() => clear()}
+                    >
+                        Clear
                     </button>
                     </div>
 
