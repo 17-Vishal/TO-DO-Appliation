@@ -105,6 +105,7 @@ app.delete('/todos/:id', async(req, res) => {
 ```
 
 ### To search by Title/ Date/ Priority/ State. In code I have filtered the data in ReactJS while displaying, but we can also use backend API's to search specifically, I am sharing the code below:
+We can pass the query as parameter and we can fetch data correspondin to those fields.
 ```
 // { Search } todo by title
 app.get('/todos/title/:title', async(req, res) => {
