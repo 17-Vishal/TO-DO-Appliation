@@ -104,6 +104,76 @@ app.delete('/todos/:id', async(req, res) => {
 });
 ```
 
+### To search by Title/ Date/ Priority/ State. In code I have filtered the data in ReactJS while displaying, but we can also use backend API's to search specifically, I am sharing the code below:
+```
+// { Search } todo by title
+app.get('/todos/title/:title', async(req, res) => {
+    try {
+        const { title } = req.params;
+        // console.log(title);
+        const todo = await pool.query("SELECT * from todo WHERE title = $1",[
+            title
+        ]);
+        res.json(todo.rows);
+    }
+    catch(err)
+    {
+        console.error(err.message);
+    }
+});
+
+
+// { Search } todo by priority
+app.get('/todos/priority/:priority', async(req, res) => {
+    try {
+        const { priority }  = req.params;
+        // console.log(priority);
+        const todo = await pool.query("SELECT * from todo WHERE priority = $1",[
+            priority
+        ]);
+        res.json(todo.rows);
+    }
+    catch(err)
+    {
+        console.error(err.message);
+    }
+});
+
+
+// { Search } todo by created_date
+app.get('/todos/created_date/:created_date', async(req, res) => {
+    try {
+        const { created_date }  = req.params;
+        // console.log(created_date);
+        const todo = await pool.query("SELECT * from todo WHERE created_date = $1",[
+            created_date
+        ]);
+        res.json(todo.rows);
+    }
+    catch(err)
+    {
+        console.error(err.message);
+    }
+});
+
+
+// { Search } todo by todo_state
+app.get('/todos/todo_state/:todo_state', async(req, res) => {
+    try {
+        const { todo_state }  = req.params;
+        // console.log(todo_state);
+        const todo = await pool.query("SELECT * from todo WHERE todo_state = $1",[
+            todo_state
+        ]);
+        res.json(todo.rows);
+    }
+    catch(err)
+    {
+        console.error(err.message);
+    }
+});
+```
+
 This is the form section here we can enter fields like title, description, priority of the task, and state it is in.
  ![alt text](https://github.com/17-Vishal/TO-DO-Application/blob/main/App_Images/1.PNG)
 
