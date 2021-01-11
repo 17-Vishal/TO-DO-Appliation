@@ -63,7 +63,8 @@ const ListTodos = () => {
             method: "DELETE"
           });
     
-          setTodos(todos.filter(todo => todo.todo_id !== id));
+          setDisplay(todos.filter(todo => todo.todo_id !== id));
+          // window.location = "/";
         } catch (err) {
           console.error(err.message);
         }
@@ -88,7 +89,28 @@ const ListTodos = () => {
             setDisplay(todos.filter(todo => todo.priority === search));
             if(fielder==="created_date")
             {
-            setDisplay(todos.filter(todo => todo.created_date === search));
+              
+            setDisplay(todos.filter(todo => 
+              // {
+            //   var i, f=0;
+            //   for (i = 0; i < search.length+1; i++) {
+            //     if(todo.created_date[i]===search[i]){
+            //       console.log(todo.created_date[i],search[i]);
+            //         continue;
+            //     }
+            //     else{
+            //       f=1;
+            //       break;
+            //     }
+            //   }
+            //   if(f===1){
+            //       return 0;
+            //   }
+            //   return 1;
+            // }
+              todo.created_date === search  
+              
+              ));
             }
             if(fielder==="todo_state")
             setDisplay(todos.filter(todo => todo.todo_state === search));
@@ -113,12 +135,13 @@ const ListTodos = () => {
     const clear = () => { 
       setFielder("");
       setSearch("");
+      getTodos();
     };
     return (
         <Fragment>
             {" "}
             <div>
-            <label for="search"><b>Search: </b></label>
+            <label htmlFor="search"><b>Search: </b></label>
             <br>
             </br>
             {/* <TextField name="title" variant="outlined" label="Text" fullWidth value={text} onChange={(e) => setSearch(e.target.value )} /> */}
@@ -186,7 +209,7 @@ const ListTodos = () => {
                 {display.map(todo => (
                   <TableRow key={todo.todo_id}>
                        <TableCell align="center"><p style={{fontSize:'14px'}}> {todo.title} </p></TableCell>
-                    <TableCell align="center" multiline rows={4}><p style={{fontSize:'14px'}}> {todo.description} </p></TableCell>
+                    <TableCell align="center" multiline='true' rows={4}><p style={{fontSize:'14px'}}> {todo.description} </p></TableCell>
                     <TableCell align="center"><p style={{fontSize:'14px'}}> {todo.priority} </p></TableCell>
                     {/* todo.created_date = {Moment(todo.created).format('YYYY-MM-DD')}; */}
                     <TableCell align="center"><p style={{fontSize:'14px'}}> {Moment(todo.created_date).format('DD-MM-YYYY')} </p></TableCell>
