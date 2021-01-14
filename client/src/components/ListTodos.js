@@ -9,50 +9,50 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import useStyles from './stylesList.js';
-import { withStyles } from '@material-ui/core/styles';
-import InputBase from '@material-ui/core/InputBase';
+// import { withStyles } from '@material-ui/core/styles';
+// import InputBase from '@material-ui/core/InputBase';
 import Moment from 'moment';
-const BootstrapInput = withStyles((theme) => ({
-  root: {
-    'label + &': {
-      marginTop: theme.spacing(3),
-    },
-  },
-  input: {
-    borderRadius: 4,
-    position: 'relative',
-    backgroundColor: theme.palette.background.paper,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 26px 10px 12px',
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    // Use the system font instead of the default Roboto font.
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:focus': {
-      borderRadius: 4,
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
-  },
-}))(InputBase);
+// const BootstrapInput = withStyles((theme) => ({
+//   root: {
+//     'label + &': {
+//       marginTop: theme.spacing(3),
+//     },
+//   },
+//   input: {
+//     borderRadius: 4,
+//     position: 'relative',
+//     backgroundColor: theme.palette.background.paper,
+//     border: '1px solid #ced4da',
+//     fontSize: 16,
+//     padding: '10px 26px 10px 12px',
+//     transition: theme.transitions.create(['border-color', 'box-shadow']),
+//     // Use the system font instead of the default Roboto font.
+//     fontFamily: [
+//       '-apple-system',
+//       'BlinkMacSystemFont',
+//       '"Segoe UI"',
+//       'Roboto',
+//       '"Helvetica Neue"',
+//       'Arial',
+//       'sans-serif',
+//       '"Apple Color Emoji"',
+//       '"Segoe UI Emoji"',
+//       '"Segoe UI Symbol"',
+//     ].join(','),
+//     '&:focus': {
+//       borderRadius: 4,
+//       borderColor: '#80bdff',
+//       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+//     },
+//   },
+// }))(InputBase);
 
 
 
 const ListTodos = () => {
     const [todos, setTodos]=useState("");
     const [display, setDisplay]=useState("");
-    const [search, setSearch]=useState("");
+    var [search, setSearch]=useState("");
     const classes = useStyles();
     const [fielder, setFielder] = useState("");
    
@@ -80,41 +80,44 @@ const ListTodos = () => {
       // }
 
       const searchTodo = async() => {
-      
+
             if(fielder==="title")
             setDisplay(todos.filter(todo => todo.title === search));
-            if(fielder==="description")
+            else if(fielder==="description")
             setDisplay(todos.filter(todo => todo.description === search));
-            if(fielder==="priority")
+            else if(fielder==="priority")
             setDisplay(todos.filter(todo => todo.priority === search));
-            if(fielder==="created_date")
+            else if(fielder==="created_date")
             {
               
-            setDisplay(todos.filter(todo => 
-              // {
-            //   var i, f=0;
-            //   for (i = 0; i < search.length+1; i++) {
-            //     if(todo.created_date[i]===search[i]){
-            //       console.log(todo.created_date[i],search[i]);
-            //         continue;
-            //     }
-            //     else{
-            //       f=1;
-            //       break;
-            //     }
-            //   }
-            //   if(f===1){
-            //       return 0;
-            //   }
-            //   return 1;
-            // }
-              todo.created_date === search  
+              var a=null;
+              if(search[1]==="0")
+              {
+                a=search[0];
+                a=+a - +1;
+                var p = a + "9";
+              }
+              else{
+                a=search[1];
+                a=+a - +1;
+                var p = search[0] + a;
+              }
               
+              var r=search[3]+search[4];
+              var q=search.substring(6,10);
+              search=q+'-'+r+'-'+p+"T18:30:00.000Z";
+              console.log(search);
+
+            setDisplay(todos.filter(todo => 
+              todo.created_date === search  
               ));
             }
-            if(fielder==="todo_state")
-            setDisplay(todos.filter(todo => todo.todo_state === search));
-          
+
+            else if(fielder==="todo_state")
+            setDisplay(todos.filter(todo => todo.todo_state === search));  
+            else{
+              getTodos();
+            }
       };
 
       const getTodos =async () => {
@@ -209,7 +212,7 @@ const ListTodos = () => {
                 {display.map(todo => (
                   <TableRow key={todo.todo_id}>
                        <TableCell align="center"><p style={{fontSize:'14px'}}> {todo.title} </p></TableCell>
-                    <TableCell align="center" multiline='true' rows={4}><p style={{fontSize:'14px'}}> {todo.description} </p></TableCell>
+                    <TableCell align="center" multiline="true" rows={4}><p style={{fontSize:'14px'}}> {todo.description} </p></TableCell>
                     <TableCell align="center"><p style={{fontSize:'14px'}}> {todo.priority} </p></TableCell>
                     {/* todo.created_date = {Moment(todo.created).format('YYYY-MM-DD')}; */}
                     <TableCell align="center"><p style={{fontSize:'14px'}}> {Moment(todo.created_date).format('DD-MM-YYYY')} </p></TableCell>
